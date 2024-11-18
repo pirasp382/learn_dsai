@@ -19,4 +19,4 @@ def mapToPredictionInput(input:Salary_Input)->Prediction_Input:
     )
    
 def mapToSalaryOutput(input):
-    return Salary_Output(salary=str(input[0]))
+    return Salary_Output(salary=str(input))

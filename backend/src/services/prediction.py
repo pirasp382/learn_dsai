@@ -7,7 +7,7 @@ file=open(filename, "rb")
 model=pickle.load(file)
 
 def predict(input: Prediction_Input):
-    return model.predict([input.toList()])
+    return round(model.predict([input.toList()])[0], 2)
 
 def pension_prediction(input: Prediction_Input)->list:
     years = 65-input.age
@@ -16,5 +16,5 @@ def pension_prediction(input: Prediction_Input)->list:
         temp = copy(input)
         temp.age=input.age+year
         temp.experience=input.experience+year
-        money_year.update({year: int(predict(temp)[0])})
+        money_year.update({year: int(predict(temp))})
     return money_year
