@@ -1,10 +1,10 @@
 class Prediction_Input():
-    def __init__(self, age, gender, education, job_title, experience):
+    def __init__(self, age, gender, education, jobTitle, experience):
         self.age=age
         self.gender=gender
         self.education=education
-        self.job_title=job_title
+        self.jobTitle=jobTitle
         self.experience=experience
         
     def toList(self):
-        return [self.age, self.gender, self.education, self.job_title, self.experience]
+        return [self.age, self.gender, self.education, self.jobTitle, self.experience]
