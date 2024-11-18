@@ -1,11 +1,11 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Response
 from fastapi.middleware.cors import CORSMiddleware
 
 import json
 
-from src.dto.Input import Input
+from src.dto.Salary_Input import Salary_Input
 from src.mapper.InputMapper import mapToPredictionInput
-from src.services.prediction import predict
+from src.services.prediction import predict, pension_prediction
 
 app = FastAPI()
 
@@ -25,10 +25,16 @@ app.add_middleware(
 
 @app.get("/hello")
 async def hello():
-    return "hello world"
+    return "hello world12"
 
 @app.post("/prediction")
-async def prediction(input: Input):
+async def prediction(input: Salary_Input):
     prediction_input=mapToPredictionInput(input)
     result=predict(prediction_input)
-    return json.dumps({"salary_prediction":str(result[0])})
+    return Response(status_code=200, content=json.dumps({"salary_prediction": str(result[0])}))
+
+@app.post("/pension_prediction")
+async def pension_prediction_endpoint(input: Salary_Input):
+    prediction_input=mapToPredictionInput(input)
+    result= pension_prediction(prediction_input)
+    return Response(content=json.dumps({"prognose": result}), status_code=200)
