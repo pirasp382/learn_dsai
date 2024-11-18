@@ -1,5 +1,5 @@
 from src.dto.prediction_Input import Prediction_Input
-from src.dto.Input import Input
+from src.dto.Salary_Input import Salary_Input
 from resources.MAPS import gender_map, education_map, job_map
 
 def genderMapper(input):
@@ -11,8 +11,8 @@ def educationMapper(input):
 def jobMapper(input):
     return job_map.get(input)
 
-def mapToPredictionInput(input:Input)->Prediction_Input:
+def mapToPredictionInput(input:Salary_Input)->Prediction_Input:
    return Prediction_Input(
-        age=input.age, gender=genderMapper(input.gender),education=educationMapper(input.education),
-        job_title=jobMapper(input.job_title), experience=input.experience
+        age=int(input.age), gender=genderMapper(input.gender),education=educationMapper(input.education),
+        jobTitle=jobMapper(input.jobTitle), experience=int(input.experience)
     )
