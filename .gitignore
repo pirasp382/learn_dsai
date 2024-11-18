@@ -4,5 +4,6 @@ run.bat
 .idea
 
 data
-temp.py
+/backend/temp.py
 temp.ipynb
+!/frontend/src/data
