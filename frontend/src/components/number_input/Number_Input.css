@@ -1,0 +1,35 @@
+/* NumberInput.css */
+
+.number-input {
+    width: 300px; /* Breite des Eingabefelds */
+    padding: 10px; /* Innenabstand */
+    border: 1px solid #ccc; /* Rahmenfarbe */
+    border-radius: 4px; /* Abgerundete Ecken */
+    font-size: 16px; /* Schriftgröße */
+    outline: none; /* Kein Fokusrahmen */
+    transition: border-color 0.3s; /* Übergangseffekt für den Rahmen */
+}
+
+.number-input:focus {
+    border-color: #007bff; /* Rahmenfarbe beim Fokus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Schatten beim Fokus */
+}
+
+.number-input::-webkit-inner-spin-button,
+.number-input::-webkit-outer-spin-button {
+    -webkit-appearance: none; /* Entfernt die Standard-Spinn-Buttons in Webkit-Browsern */
+    margin: 0; /* Entfernt den Margin */
+}
+
+.number-input::placeholder {
+    color: #aaa; /* Farbe des Platzhalters */
+    opacity: 1; /* Opazität des Platzhalters */
+}
+
+.number-input.error {
+    border-color: #dc3545; /* Rahmenfarbe für Fehlerzustand */
+}
+
+.number-input.error:focus {
+    box-shadow: 0 0 5px rgba(220, 53, 69, 0.5); /* Schatten für Fehlerzustand */
+}

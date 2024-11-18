@@ -1,0 +1,39 @@
+/* Button.css */
+
+.button {
+    display: inline-block; /* Inline-Block-Element für bessere Layout-Kontrolle */
+    padding: 10px 20px; /* Innenabstand (oben/unten, links/rechts) */
+    font-size: 16px; /* Schriftgröße */
+    font-weight: bold; /* Fettdruck */
+    color: #fff; /* Schriftfarbe */
+    background-color: #007bff; /* Hintergrundfarbe */
+    border: none; /* Kein Rahmen */
+    border-radius: 4px; /* Abgerundete Ecken */
+    cursor: pointer; /* Zeiger-Cursor beim Hover */
+    transition: background-color 0.3s, transform 0.2s; /* Übergangseffekte */
+}
+
+.button:hover {
+    background-color: #0056b3; /* Dunklere Hintergrundfarbe beim Hover */
+}
+
+.button:active {
+    transform: scale(0.95); /* Verkleinern des Buttons beim Klicken */
+}
+
+.button.disabled {
+    background-color: #ccc; /* Hintergrundfarbe für deaktivierte Buttons */
+    color: #666; /* Schriftfarbe für deaktivierte Buttons */
+    cursor: not-allowed; /* Zeiger-Cursor für deaktivierte Buttons */
+}
+
+.button.outline {
+    background-color: transparent; /* Transparenter Hintergrund */
+    border: 2px solid #007bff; /* Rahmenfarbe */
+    color: #007bff; /* Schriftfarbe */
+}
+
+.button.outline:hover {
+    background-color: #007bff; /* Hintergrundfarbe beim Hover */
+    color: #fff; /* Schriftfarbe beim Hover */
+}

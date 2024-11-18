@@ -1,0 +1,76 @@
+/* SearchableDropdown.css */
+
+.dropdown {
+    position: relative;
+    width: 300px; /* Breite des Dropdowns */
+    margin: 20px 0; /* Abstand nach oben und unten */
+}
+
+.control {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc; /* Rahmen des Eingabefelds */
+    border-radius: 4px; /* Abgerundete Ecken */
+    padding: 10px; /* Innenabstand */
+    cursor: pointer; /* Zeiger-Cursor beim Hover */
+    background-color: #fff; /* Hintergrundfarbe */
+    transition: border-color 0.3s; /* Übergangseffekt für den Rahmen */
+}
+
+.control:hover {
+    border-color: #007bff; /* Rahmenfarbe beim Hover */
+}
+
+.selected-value {
+    flex: 1; /* Füllt den verfügbaren Platz */
+}
+
+.selected-value input {
+    border: none; /* Kein Rahmen für das Eingabefeld */
+    outline: none; /* Kein Fokusrahmen */
+    width: 100%; /* Volle Breite */
+    font-size: 16px; /* Schriftgröße */
+}
+
+.arrow {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #333; /* Farbe des Pfeils */
+    margin-left: 10px; /* Abstand zwischen Eingabefeld und Pfeil */
+    transition: transform 0.3s; /* Übergangseffekt für die Drehung */
+}
+
+.arrow.open {
+    transform: rotate(180deg); /* Drehen des Pfeils, wenn das Dropdown geöffnet ist */
+}
+
+.options {
+    position: absolute;
+    top: 100%; /* Position unter dem Eingabefeld */
+    left: 0;
+    right: 0;
+    background-color: #fff; /* Hintergrundfarbe der Optionen */
+    border: 1px solid #ccc; /* Rahmen der Optionen */
+    border-radius: 4px; /* Abgerundete Ecken */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Schatten für die Optionen */
+    z-index: 1000; /* Sicherstellen, dass die Optionen über anderen Elementen liegen */
+    max-height: 200px; /* Maximale Höhe der Optionen */
+    overflow-y: auto; /* Scrollen, wenn die Optionen zu viele sind */
+}
+
+.option {
+    padding: 10px; /* Innenabstand für die Optionen */
+    cursor: pointer; /* Zeiger-Cursor beim Hover */
+    transition: background-color 0.3s; /* Übergangseffekt für den Hintergrund */
+}
+
+.option:hover {
+    background-color: #f0f0f0; /* Hintergrundfarbe beim Hover */
+}
+
+.option.selected {
+    background-color: #007bff; /* Hintergrundfarbe für die ausgewählte Option */
+    color: #fff; /* Schriftfarbe für die ausgewählte Option */
+}

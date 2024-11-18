@@ -1,0 +1,28 @@
+/* NumberOutput.css */
+
+.number-output {
+    display: inline-block; /* Inline-Block-Element für bessere Layout-Kontrolle */
+    padding: 10px 15px; /* Innenabstand (oben/unten, links/rechts) */
+    font-size: 18px; /* Schriftgröße */
+    font-weight: bold; /* Fettdruck */
+    color: #333; /* Schriftfarbe */
+    background-color: #f8f9fa; /* Hintergrundfarbe */
+    border: 1px solid #ccc; /* Rahmenfarbe */
+    border-radius: 4px; /* Abgerundete Ecken */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Schatten für Tiefe */
+    transition: background-color 0.3s, border-color 0.3s; /* Übergangseffekte */
+}
+
+.number-output:hover {
+    background-color: #e9ecef; /* Hintergrundfarbe beim Hover */
+}
+
+.number-output.error {
+    color: #dc3545; /* Schriftfarbe für Fehlerzustand */
+    border-color: #dc3545; /* Rahmenfarbe für Fehlerzustand */
+}
+
+.number-output.success {
+    color: #28a745; /* Schriftfarbe für Erfolg */
+    border-color: #28a745; /* Rahmenfarbe für Erfolg */
+}
