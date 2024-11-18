@@ -16,4 +16,4 @@ COPY . /app/
 
 # CMD [ "python", "temp.py" ]
 
-CMD ["python", "-m", "uvicorn", "src.resources.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["python", "-m", "uvicorn", "src.resources.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
