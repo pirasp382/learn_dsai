@@ -7,6 +7,7 @@ import Home from "./components/Home/Home";
 function App() {
 
     return <div>
+        {
         <BrowserRouter>
             <div>
                 <Navbar/>
@@ -16,6 +17,7 @@ function App() {
                 </Routes>
             </div>
         </BrowserRouter>
+        }
     </div>
 }
 
