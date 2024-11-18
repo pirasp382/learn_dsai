@@ -28,8 +28,8 @@ function Salary_Prediciton() {
             body: JSON.stringify(input),
         })
             .then(response => response.json())
-            .then(data => data["salary_prediction"])
-            .then(data => setSalaryPrediction(Math.round(data * 100) / 100 + "$"))
+            .then(data => data["salary"])
+            .then(data => setSalaryPrediction(data + "$"))
             .catch(error => document.getElementById("output_label").innerText = "Fehler bei der Berechnung");
     }
 
