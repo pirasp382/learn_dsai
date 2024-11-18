@@ -1,5 +1,5 @@
-from src.dto.prediction_Input import Prediction_Input
-from src.dto.Salary_Input import Salary_Input
+from src.dto.salary_prediction.prediction_Input import Prediction_Input
+from src.dto.salary_prediction.Salary_Input import Salary_Input
 from resources.MAPS import gender_map, education_map, job_map
 
 def genderMapper(input):

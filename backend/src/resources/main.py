@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 import json
 
-from src.dto.Salary_Input import Salary_Input
+from src.dto.salary_prediction.Salary_Input import Salary_Input
 from src.mapper.InputMapper import mapToPredictionInput
 from src.services.prediction import predict, pension_prediction
 

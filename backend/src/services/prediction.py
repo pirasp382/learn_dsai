@@ -1,5 +1,5 @@
 import pickle
-from src.dto.prediction_Input import Prediction_Input
+from src.dto.salary_prediction.prediction_Input import Prediction_Input
 from copy import copy
 
 filename="./resources/model.learn"
