@@ -1,8 +1,8 @@
-import Prediction from "./components/salary_prediction/prediction";
+import Salary_Prediciton from "./components/salary_prediction/salary_prediction";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import Navbar from "./components/Navbar/Navbar";
+import Navbar from "./components/navbar/navbar";
 import "./App.css"
-import Home from "./components/Home/Home";
+import Home from "./components/Home/home";
 
 function App() {
 
@@ -13,7 +13,7 @@ function App() {
                 <Navbar/>
                 <Routes>
                     <Route path={"/"} element={<Home/>}/>
-                    <Route path={"/salary"} element={<Prediction/>}/>
+                    <Route path={"/salary"} element={<Salary_Prediciton/>}/>
                 </Routes>
             </div>
         </BrowserRouter>

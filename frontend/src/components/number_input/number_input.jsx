@@ -1,4 +1,4 @@
-import "./Number_Input.css"
+import "./number_input.css"
 
 function Number_Input({value, onChange, placehoder, min, title}){
 

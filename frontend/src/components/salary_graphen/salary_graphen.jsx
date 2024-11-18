@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
 
-function Graphen({ dataPrognose }) {
+function Salary_Graphen ({ dataPrognose }) {
     const chartRef = useRef(null);
 
     useEffect(() => {
@@ -45,4 +45,4 @@ function Graphen({ dataPrognose }) {
     );
 }
 
-export default Graphen;
+export default Salary_Graphen;

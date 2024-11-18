@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import "./SearchableDropdown.css";
+import "./searchable_dropdown.css";
 
-const SearchableDropdown = ({ options, label, id, selectedVal, handleChange, placeholder, title }) => {
+const Searchable_Dropdown = ({ options, label, id, selectedVal, handleChange, placeholder, title }) => {
     const [query, setQuery] = useState("");
     const [isOpen, setIsOpen] = useState(false);
     const [hasSelected, setHasSelected] = useState(false); // Neues State-Flag
@@ -80,4 +80,4 @@ const SearchableDropdown = ({ options, label, id, selectedVal, handleChange, pla
     );
 };
 
-export default SearchableDropdown;
+export default Searchable_Dropdown;

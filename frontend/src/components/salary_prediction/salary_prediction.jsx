@@ -1,15 +1,15 @@
-import Graphen from "../salary_graphen/Graphen";
-import { useState } from "react";
+import Salary_Graphen from "../salary_graphen/salary_graphen";
+import {useState} from "react";
 import job_title from "../../data/jobs";
 import educationLevel from "../../data/education";
 import genderList from "../../data/gender";
-import "./prediction.css";
-import SearchableDropdown from "../searchable_dropdown/SearchableDropdown";
-import Number_Input from "../number_input/Number_Input";
+import "./salary_prediction.css";
+import Searchable_Dropdown from "../searchable_dropdown/searchable_dropdown";
+import Number_Input from "../number_input/number_input";
 import Button from "../button/button";
 import Number_Output from "../number_output/number_output";
 
-function Prediction() {
+function Salary_Prediciton() {
     const [prognose, setPrognose] = useState(new Map());
     const [age, setAge] = useState("18");
     const [gender, setGender] = useState("male");
@@ -19,7 +19,7 @@ function Prediction() {
     const [salaryPrediction, setSalaryPrediction] = useState("");
 
     function getPrediction() {
-        const input = { age, gender, education, jobTitle, experience };
+        const input = {age, gender, education, jobTitle, experience};
         fetch("http://localhost:8000/prediction", {
             method: "POST",
             headers: {
@@ -34,7 +34,7 @@ function Prediction() {
     }
 
     function getPrognose() {
-        const input = { age, gender, education, jobTitle, experience };
+        const input = {age, gender, education, jobTitle, experience};
         fetch("http://localhost:8000/pension_prediction", {
             method: "POST",
             headers: {
@@ -49,7 +49,7 @@ function Prediction() {
     }
 
     return (
-        <div class ="main">
+        <div className={"main"}>
             <div id={"salary"}>
                 <div id={"input_form"}>
                     <div id={"age_input"}>
@@ -63,7 +63,7 @@ function Prediction() {
                                       title={"Job Experience"}/>
                     </div>
                     <div id={"gender_input"}>
-                        <SearchableDropdown
+                        <Searchable_Dropdown
                             options={genderList}
                             label={"name"}
                             id={"id"}
@@ -73,7 +73,7 @@ function Prediction() {
                             title={"Gender"}/>
                     </div>
                     <div id={"education_input"}>
-                        <SearchableDropdown
+                        <Searchable_Dropdown
                             options={educationLevel}
                             label={"name"}
                             id={"id"}
@@ -83,7 +83,7 @@ function Prediction() {
                             title={"Education level"}/>
                     </div>
                     <div id={"job_input"}>
-                        <SearchableDropdown
+                        <Searchable_Dropdown
                             options={job_title}
                             label="name"
                             id="id"
@@ -106,10 +106,10 @@ function Prediction() {
                 </div>
             </div>
             <div id={"prognose"}>
-                <Graphen dataPrognose={prognose}/>
+                <Salary_Graphen dataPrognose={prognose}/>
             </div>
         </div>
     );
 }
 
-export default Prediction;
+export default Salary_Prediciton;
