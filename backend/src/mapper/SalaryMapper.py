@@ -1,6 +1,7 @@
 from src.dto.salary_prediction.prediction_Input import Prediction_Input
 from src.dto.salary_prediction.Salary_Input import Salary_Input
 from src.dto.salary_prediction.salary_output import Salary_Output
+from src.dto.salary_prediction.prognose_output import Prognose_Output
 from resources.MAPS import gender_map, education_map, job_map
 
 def genderMapper(input):
@@ -20,3 +21,8 @@ def mapToPredictionInput(input:Salary_Input)->Prediction_Input:
    
 def mapToSalaryOutput(input):
     return Salary_Output(salary=str(input))
+
+def mapToPrognoseOutput(input)->Prognose_Output:
+    return Prognose_Output(
+        prognose=input
+    )

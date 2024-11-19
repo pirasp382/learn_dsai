@@ -8,7 +8,7 @@ import json
 
 from src.dto.salary_prediction.Salary_Input import Salary_Input
 from src.dto.salary_prediction.salary_output import Salary_Output
-from src.mapper.SalaryMapper import mapToPredictionInput, mapToSalaryOutput
+from src.mapper.SalaryMapper import mapToPredictionInput, mapToSalaryOutput, mapToPrognoseOutput
 from src.services.prediction import predict, pension_prediction
 
 app = FastAPI()
@@ -41,5 +41,6 @@ async def prediction(input: Salary_Input):
 @app.post("/pension_prediction")
 async def pension_prediction_endpoint(input: Salary_Input):
     prediction_input=mapToPredictionInput(input)
-    result= pension_prediction(prediction_input)
-    return Response(content=json.dumps({"prognose": result}), status_code=200)
+    output= pension_prediction(prediction_input)
+    result=mapToPrognoseOutput(output)
+    return JSONResponse(content=jsonable_encoder(result), status_code=status.HTTP_200_OK)
