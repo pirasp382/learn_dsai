@@ -8,6 +8,7 @@ import Searchable_Dropdown from "../searchable_dropdown/searchable_dropdown";
 import Number_Input from "../number_input/number_input";
 import Button from "../button/button";
 import Number_Output from "../number_output/number_output";
+import Modal from "../modal/modal";
 
 function Salary_Prediciton() {
     const [prognose, setPrognose] = useState(new Map());
@@ -17,6 +18,15 @@ function Salary_Prediciton() {
     const [jobTitle, setJobTitle] = useState(job_title[0]["name"]);
     const [experience, setExperience] = useState("0");
     const [salaryPrediction, setSalaryPrediction] = useState("");
+    const [isopenModal, setIsOpenModal] = useState(false);
+
+    const openModal = () => {
+        setIsOpenModal(true)
+    }
+
+    const closeModal = () => {
+        setIsOpenModal(false);
+    }
 
     function getPrediction() {
         const input = {age, gender, education, jobTitle, experience};
@@ -29,7 +39,10 @@ function Salary_Prediciton() {
         })
             .then(response => response.json())
             .then(data => data["salary"])
-            .then(data => setSalaryPrediction(data + "$"))
+            .then(data => {
+                setSalaryPrediction(data + "$")
+                openModal()
+            })
             .catch(error => document.getElementById("output_label").innerText = "Fehler bei der Berechnung");
     }
 
@@ -101,13 +114,14 @@ function Salary_Prediciton() {
                                 outline={true} text={"Retirement Prognose"}/>
                     </div>
                 </div>
-                <div>
-                    <Number_Output title={"Salary prediction"} value={salaryPrediction}/>
-                </div>
+                <Modal isOpen={isopenModal} onClose={closeModal} title={"Salary prediction"}>
+                    <Number_Output title={"Salary Prediction"} value={salaryPrediction}/>
+                    <Salary_Graphen dataPrognose={prognose}/>
+                </Modal>
+
+
             </div>
-            <div id={"prognose"}>
-                <Salary_Graphen dataPrognose={prognose}/>
-            </div>
+
         </div>
     );
 }
