@@ -57,7 +57,10 @@ function Salary_Prediciton() {
         })
             .then(response => response.json())
             .then(data => data["prognose"])
-            .then(data => setPrognose(new Map(Object.entries(data))))
+            .then(data => {
+                setPrognose(new Map(Object.entries(data)));
+                openModal();
+            })
             .catch(error => console.log(error));
     }
 
