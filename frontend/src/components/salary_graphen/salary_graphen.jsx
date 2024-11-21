@@ -1,7 +1,8 @@
 import { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
+import PropTypes from "prop-types";
 
-function Salary_Graphen ({ dataPrognose }) {
+function SalaryGraphen ({ dataPrognose }) {
     const chartRef = useRef(null);
 
     useEffect(() => {
@@ -45,4 +46,8 @@ function Salary_Graphen ({ dataPrognose }) {
     );
 }
 
-export default Salary_Graphen;
+SalaryGraphen.propTypes={
+    dataPrognose:PropTypes.any
+}
+
+export default SalaryGraphen;

@@ -1,4 +1,5 @@
 import "./button.css"
+import PropTypes from "prop-types";
 
 function Button({onClick, disabled, outline, text}) {
 
@@ -12,6 +13,13 @@ function Button({onClick, disabled, outline, text}) {
             </button>
         </div>
     )
+}
+
+Button.propTypes={
+    onClick:PropTypes.func,
+    disabled:PropTypes.bool,
+    outline:PropTypes.bool,
+    text:PropTypes.string
 }
 
 export default Button;

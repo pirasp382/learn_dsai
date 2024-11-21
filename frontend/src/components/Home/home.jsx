@@ -1,8 +1,7 @@
-
 import React from 'react';
 import "./home.css"
 
-const Home = () => {
+function Home() {
     return (
         <div className="home-container">
             <header className="hero">
@@ -13,7 +12,8 @@ const Home = () => {
 
             <section className="about">
                 <h2>Über das Projekt</h2>
-                <p>Dieses Projekt zielt darauf ab, mir die Fähigkeiten zu vermitteln, die ich benötige, um in der Welt der Technologie erfolgreich zu sein.</p>
+                <p>Dieses Projekt zielt darauf ab, mir die Fähigkeiten zu vermitteln, die ich
+                    benötige, um in der Welt der Technologie erfolgreich zu sein.</p>
                 <ul>
                     <li>Grundlagen von Machine Learning lernen</li>
                     <li>Vollständige Webanwendungen entwickeln</li>
@@ -25,7 +25,8 @@ const Home = () => {
                 <h2>Projekte</h2>
                 <div className="project">
                     <h3>Projekt 1: Gehaltsvorhersage</h3>
-                    <p>Eine Anwendung zur Vorhersage von Gehältern basierend auf verschiedenen Faktoren.</p>
+                    <p>Eine Anwendung zur Vorhersage von Gehältern basierend auf verschiedenen
+                        Faktoren.</p>
                     <a href="/salary" className="project-link">Mehr erfahren</a>
                 </div>
             </section>
@@ -35,6 +36,6 @@ const Home = () => {
             </footer>
         </div>
     );
-};
+}
 
 export default Home;

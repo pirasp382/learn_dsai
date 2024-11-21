@@ -1,6 +1,7 @@
 import "./number_input.css"
+import PropTypes from "prop-types";
 
-function Number_Input({value, onChange, placehoder, min, title}){
+function NumberInput({value, onChange, placehoder, min, title}){
 
     return <div className={"number-input"}>
         <h3>{title}</h3>
@@ -14,4 +15,14 @@ function Number_Input({value, onChange, placehoder, min, title}){
     </div>
 }
 
-export default Number_Input;
+NumberInput.propTypes={
+    value:PropTypes.string,
+    onChange:PropTypes.func,
+    placeholder:PropTypes.string,
+    min:PropTypes.string,
+    title:PropTypes.string
+}
+
+
+
+export default NumberInput;

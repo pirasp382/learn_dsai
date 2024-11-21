@@ -1,4 +1,5 @@
 import "./modal.css"
+import PropTypes from "prop-types";
 
 function Modal({isOpen, onClose, title, children}) {
     if (!isOpen) return null;
@@ -20,6 +21,13 @@ function Modal({isOpen, onClose, title, children}) {
             </footer>
         </div>
     </div>
+}
+
+Modal.propTypes={
+    isOpen:PropTypes.bool,
+    onClose:PropTypes.func,
+    title:PropTypes.string,
+    children:PropTypes.node
 }
 
 export default Modal;

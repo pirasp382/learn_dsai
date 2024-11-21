@@ -1,16 +1,17 @@
-import Salary_Graphen from "../salary_graphen/salary_graphen";
 import {useState} from "react";
 import job_title from "../../data/jobs";
 import educationLevel from "../../data/education";
 import genderList from "../../data/gender";
 import "./salary_prediction.css";
-import Searchable_Dropdown from "../searchable_dropdown/searchable_dropdown";
-import Number_Input from "../number_input/number_input";
+import SearchableDropdown from "../searchable_dropdown/searchable_dropdown";
+import NumberInput from "../number_input/number_input";
 import Button from "../button/button";
-import Number_Output from "../number_output/number_output";
+import NumberOutput from "../number_output/number_output";
 import Modal from "../modal/modal";
+import SalaryGraphen from "../salary_graphen/salary_graphen";
 
-function Salary_Prediciton() {
+
+function SalaryPrediciton() {
     const [prognose, setPrognose] = useState(new Map());
     const [age, setAge] = useState("18");
     const [gender, setGender] = useState("male");
@@ -29,7 +30,7 @@ function Salary_Prediciton() {
     }
 
     function getPrediction() {
-        const input = {age, gender, education, jobTitle, experience};
+        const input = {age, gender, education, "job_title": jobTitle, experience};
         fetch("http://localhost:8000/prediction", {
             method: "POST",
             headers: {
@@ -43,11 +44,11 @@ function Salary_Prediciton() {
                 setSalaryPrediction(data + "$")
                 openModal()
             })
-            .catch(error => document.getElementById("output_label").innerText = "Fehler bei der Berechnung");
+            .catch(() => document.getElementById("output_label").innerText = "Fehler bei der Berechnung");
     }
 
     function getPrognose() {
-        const input = {age, gender, education, jobTitle, experience};
+        const input = {age, gender, education, "job_title": jobTitle, experience};
         fetch("http://localhost:8000/pension_prediction", {
             method: "POST",
             headers: {
@@ -69,17 +70,17 @@ function Salary_Prediciton() {
             <div id={"salary"}>
                 <div id={"input_form"}>
                     <div id={"age_input"}>
-                        <Number_Input value={age} onChange={(e) => setAge(e.target.value)}
-                                      placehoder={"age"} min={"18"} title={"Age"}/>
+                        <NumberInput value={age} onChange={(e) => setAge(e.target.value)}
+                                     placehoder={"age"} min={"18"} title={"Age"}/>
                     </div>
                     <div id={"experience_input"}>
-                        <Number_Input value={experience}
+                        <NumberOutput value={experience}
                                       onChange={(e) => setExperience(e.target.value)}
                                       placehoder={"Job experience"} min={"0"}
                                       title={"Job Experience"}/>
                     </div>
                     <div id={"gender_input"}>
-                        <Searchable_Dropdown
+                        <SearchableDropdown
                             options={genderList}
                             label={"name"}
                             id={"id"}
@@ -89,7 +90,7 @@ function Salary_Prediciton() {
                             title={"Gender"}/>
                     </div>
                     <div id={"education_input"}>
-                        <Searchable_Dropdown
+                        <SearchableDropdown
                             options={educationLevel}
                             label={"name"}
                             id={"id"}
@@ -99,7 +100,7 @@ function Salary_Prediciton() {
                             title={"Education level"}/>
                     </div>
                     <div id={"job_input"}>
-                        <Searchable_Dropdown
+                        <SearchableDropdown
                             options={job_title}
                             label="name"
                             id="id"
@@ -118,8 +119,8 @@ function Salary_Prediciton() {
                     </div>
                 </div>
                 <Modal isOpen={isopenModal} onClose={closeModal} title={"Salary prediction"}>
-                    <Number_Output title={"Salary Prediction"} value={salaryPrediction}/>
-                    <Salary_Graphen dataPrognose={prognose}/>
+                    <NumberOutput title={"Salary Prediction"} value={salaryPrediction}/>
+                    <SalaryGraphen dataPrognose={prognose}/>
                 </Modal>
 
 
@@ -129,4 +130,4 @@ function Salary_Prediciton() {
     );
 }
 
-export default Salary_Prediciton;
+export default SalaryPrediciton;

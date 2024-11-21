@@ -1,7 +1,16 @@
-import { useEffect, useRef, useState } from "react";
+import {useEffect, useRef, useState} from "react";
 import "./searchable_dropdown.css";
+import PropTypes from "prop-types";
 
-const Searchable_Dropdown = ({ options, label, id, selectedVal, handleChange, placeholder, title }) => {
+const SearchableDropdown = ({
+                                options,
+                                label,
+                                id,
+                                selectedVal,
+                                handleChange,
+                                placeholder,
+                                title,
+                            }) => {
     const [query, setQuery] = useState("");
     const [isOpen, setIsOpen] = useState(false);
     const [hasSelected, setHasSelected] = useState(false); // Neues State-Flag
@@ -35,7 +44,7 @@ const Searchable_Dropdown = ({ options, label, id, selectedVal, handleChange, pl
 
     const filter = (options) => {
         return options.filter((option) =>
-            option[label].toLowerCase().includes(query.toLowerCase())
+            option[label].toLowerCase().includes(query.toLowerCase()),
         );
     };
 
@@ -80,4 +89,14 @@ const Searchable_Dropdown = ({ options, label, id, selectedVal, handleChange, pl
     );
 };
 
-export default Searchable_Dropdown;
+SearchableDropdown.propTypes = {
+    options: PropTypes.array,
+    label: PropTypes.string,
+    id: PropTypes.string,
+    selectedVal: PropTypes.string,
+    handleChange: PropTypes.func,
+    placeholder: PropTypes.string,
+    title: PropTypes.string,
+}
+
+export default SearchableDropdown;

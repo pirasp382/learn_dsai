@@ -1,6 +1,7 @@
 import "./number_output.css"
+import PropTypes from "prop-types";
 
-function Number_Output({title, value}) {
+function NumberOutput({title, value}) {
 
     return (
         <div>
@@ -12,4 +13,9 @@ function Number_Output({title, value}) {
     )
 }
 
-export default Number_Output;
+NumberOutput.propTypes={
+    title:PropTypes.string,
+    value:PropTypes.string
+}
+
+export default NumberOutput;
