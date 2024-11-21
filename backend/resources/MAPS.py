@@ -1,13 +1,13 @@
-gender_map={
+GENDER_MAP={
     "male":0, "female":1,"other":2
 }
 
-education_map={
+EDUCATION_MAP={
     "Bachelor's Degree":0, "Master's Degree":1, "PhD":2,
     "Bachelor's":3, "High School":4, "Master's": 5, "phD":6
 }
 
-job_map={   
+JOB_MAP={   
     "Software Engineer":0, 
 	"Data Scientist":1, "Software Engineer Manager":2, "Data Analyst":3, 
 	"Senior Project Engineer":4, "Product Manager":5, "Full Stack Engineer":6, 

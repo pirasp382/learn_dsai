@@ -6,9 +6,9 @@ from fastapi import status
 
 import json
 
-from src.dto.salary_prediction.Salary_Input import Salary_Input
-from src.dto.salary_prediction.salary_output import Salary_Output
-from src.mapper.SalaryMapper import mapToPredictionInput, mapToSalaryOutput, mapToPrognoseOutput
+from src.dto.salary_prediction.salary_input import SalaryInput
+from src.dto.salary_prediction.salary_output import SalaryOutput
+from src.mapper.salary_mapper import map_to_prediction_input, map_to_salary_output, map_to_prognose_output
 from src.services.prediction import predict, pension_prediction
 
 app = FastAPI()
@@ -31,16 +31,16 @@ app.add_middleware(
 async def hello():
     return "hello world12"
 
-@app.post("/prediction", response_model=Salary_Output)
-async def prediction(input: Salary_Input):
-    prediction_input=mapToPredictionInput(input)
+@app.post("/prediction", response_model=SalaryOutput)
+async def prediction(input: SalaryInput):
+    prediction_input=map_to_prediction_input(input)
     output=predict(prediction_input)
-    result=mapToSalaryOutput(output)
+    result=map_to_salary_output(output)
     return JSONResponse(content=jsonable_encoder(result), status_code=status.HTTP_200_OK)
 
 @app.post("/pension_prediction")
-async def pension_prediction_endpoint(input: Salary_Input):
-    prediction_input=mapToPredictionInput(input)
+async def pension_prediction_endpoint(input: SalaryInput):
+    prediction_input=map_to_prediction_input(input)
     output= pension_prediction(prediction_input)
-    result=mapToPrognoseOutput(output)
+    result=map_to_prognose_output(output)
     return JSONResponse(content=jsonable_encoder(result), status_code=status.HTTP_200_OK)

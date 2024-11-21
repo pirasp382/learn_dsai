@@ -1,4 +1,4 @@
 from pydantic import BaseModel, Field
 
-class Prognose_Output(BaseModel):
+class PrognoseOutput(BaseModel):
     prognose: dict = Field(..., description="User annual salary prediction in $")
