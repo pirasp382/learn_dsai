@@ -27,6 +27,20 @@ function SalaryGraphen ({ dataPrognose }) {
                         }],
                     },
                     options: {
+                        scales:{
+                          y: {
+                              title:{
+                                  display: true,
+                                  text: "annual salary in $"
+                              }
+                          },
+                            x:{
+                              title:{
+                                  display: true,
+                                  text: "Years"
+                              }
+                            }
+                        },
                         plugins: {
                             title: {
                                 display: true,
