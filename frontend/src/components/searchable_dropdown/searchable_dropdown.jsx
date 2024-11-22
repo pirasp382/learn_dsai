@@ -50,7 +50,8 @@ const SearchableDropdown = ({
 
     return (
         <div className="dropdown" ref={dropdownRef}>
-            <div className="control">
+            <div className="control"
+                 onClick={() => setIsOpen((prev) => !prev)}>
                 <div className="selected-value">
                     <h3>{title}</h3>
                     <input
@@ -63,7 +64,6 @@ const SearchableDropdown = ({
                             setHasSelected(false); // Entfernt die Auswahl, wenn der Benutzer tippt
                             handleChange(null);
                         }}
-                        onClick={() => setIsOpen((prev) => !prev)}
                         placeholder={!hasSelected ? placeholder : ""}
                     />
                 </div>
