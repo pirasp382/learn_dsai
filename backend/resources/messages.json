@@ -1,0 +1,22 @@
+{
+    "MESSAGE_0001":{
+        "message":"Person muss über 18 sein",
+        "severity": "ERROR"
+    },
+    "MESSAGE_0002":{
+        "message":"Berufserfahrung muss positiv sein",
+        "severity": "ERROR"
+    },
+    "MESSAGE_0003":{
+        "message":"Geschlecht muss in der Liste sein",
+        "severity": "ERROR"
+    },
+    "MESSAGE_0004":{
+        "message":"Ausbildung muss in der Liste sein",
+        "severity": "ERROR"
+    },
+    "MESSAGE_0005":{
+        "message":"Jobtitel muss in der Liste sein",
+        "severity": "ERROR"
+    }
+}

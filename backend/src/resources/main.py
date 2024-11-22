@@ -6,6 +6,7 @@ from fastapi import status
 
 import json
 
+from src.dto.salary_prediction.validation_service import ValidationService
 from src.dto.salary_prediction.salary_input import SalaryInput
 from src.dto.salary_prediction.salary_output import SalaryOutput
 from src.mapper.salary_mapper import map_to_prediction_input, map_to_salary_output, map_to_prognose_output
@@ -33,6 +34,10 @@ async def hello():
 
 @app.post("/prediction", response_model=SalaryOutput)
 async def prediction(input: SalaryInput):
+    error_list=ValidationService().validate(input)
+    if len(error_list)>0:
+        return JSONResponse(content=jsonable_encoder(error_list),
+                            status_code=status.HTTP_200_OK)
     prediction_input=map_to_prediction_input(input)
     output=predict(prediction_input)
     result=map_to_salary_output(output)
@@ -40,6 +45,10 @@ async def prediction(input: SalaryInput):
 
 @app.post("/pension_prediction")
 async def pension_prediction_endpoint(input: SalaryInput):
+    error_list=ValidationService().validate(input)
+    if len(error_list)>0: 
+        return JSONResponse(content=jsonable_encoder(error_list),
+                            status_code=status.HTTP_200_OK)
     prediction_input=map_to_prediction_input(input)
     output= pension_prediction(prediction_input)
     result=map_to_prognose_output(output)
