@@ -1,28 +1,38 @@
 import "./number_input.css"
 import PropTypes from "prop-types";
+import {Tooltip} from "react-tooltip";
 
-function NumberInput({value, onChange, placehoder, min, title}){
+function NumberInput({id, value, onChange, placeholder, min, title, hasTooltip, toolTipText}) {
 
     return <div className={"number-input"}>
         <h3>{title}</h3>
-        <input
-            value={value}
-            type={"number"}
-            onChange={onChange}
-            placeholder={placehoder}
-            min={min}
-        />
+        <a className={id}>
+            <input
+                value={value}
+                type={"number"}
+                onChange={onChange}
+                placeholder={placeholder}
+                min={min}
+            />
+        </a>
+        <div>
+            {hasTooltip ?
+                <Tooltip className={"tooltip"} anchorSelect={"." + id}
+                         place={"top-end"}>{toolTipText}</Tooltip> : ""}
+        </div>
     </div>
 }
 
-NumberInput.propTypes={
-    value:PropTypes.string,
-    onChange:PropTypes.func,
-    placeholder:PropTypes.string,
-    min:PropTypes.string,
-    title:PropTypes.string
+NumberInput.propTypes = {
+    id: PropTypes.string,
+    value: PropTypes.string,
+    onChange: PropTypes.func,
+    placeholder: PropTypes.string,
+    min: PropTypes.string,
+    title: PropTypes.string,
+    hasTooltip: PropTypes.bool,
+    toolTipText: PropTypes.string,
 }
-
 
 
 export default NumberInput;

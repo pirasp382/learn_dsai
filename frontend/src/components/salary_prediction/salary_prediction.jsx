@@ -70,14 +70,17 @@ function SalaryPrediciton() {
             <div id={"salary"}>
                 <div id={"input_form"}>
                     <div id={"age_input"}>
-                        <NumberInput value={age} onChange={(e) => setAge(e.target.value)}
-                                     placehoder={"age"} min={"18"} title={"Age"}/>
+                        <NumberInput id={"age"} value={age} onChange={(e) => setAge(e.target.value)}
+                                     placeholder={"age"} min={"18"} title={"Age"}/>
                     </div>
                     <div id={"experience_input"}>
-                        <NumberOutput value={experience}
+                        <NumberInput value={experience}
+                                     id={"experience"}
                                       onChange={(e) => setExperience(e.target.value)}
-                                      placehoder={"Job experience"} min={"0"}
-                                      title={"Job Experience"}/>
+                                      placeholder={"Job experience"} min={"0"}
+                                      title={"Job Experience"}
+                        hasTooltip={true}
+                        toolTipText={"Job Experience in Years"}/>
                     </div>
                     <div id={"gender_input"}>
                         <SearchableDropdown
