@@ -32,7 +32,7 @@ Um das Projekt lokal auszuführen, folge diesen Schritten:
 
  **Repository klonen**:
    ```bash
-   git clone https://github.com/deinbenutzername/deinprojekt-frontend.git
+   git clone https://github.com/pirasp382/learn_dsai.git
    cd learn_dsai
    docker-compose up --build
    ```
