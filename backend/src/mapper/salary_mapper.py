@@ -16,7 +16,7 @@ def job_mapper(input):
 def map_to_prediction_input(input:SalaryInput)->PredictionInput:
    return PredictionInput(
         age=int(input.age), gender=gender_mapper(input.gender),education=education_mapper(input.education),
-        job_title=job_mapper(input.job_title), experience=int(input.experience)
+        job_title=job_mapper(input.job_title), experience=float(input.experience)
     )
    
 def map_to_salary_output(input):
