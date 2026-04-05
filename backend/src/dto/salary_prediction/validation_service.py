@@ -22,7 +22,7 @@ class ValidationService:
         return int(age)<18
     
     def validate_job_experience(self, job_experience:str)->bool:
-        return int(job_experience)<0
+        return float(job_experience)<0
     
     def validate_gender(self, gender)->bool:
         return not GENDER_MAP.__contains__(gender)
