@@ -7,7 +7,7 @@ from fastapi import status
 import json
 
 from src.dto.salary_prediction.validation_service import ValidationService
-from src.dto.salary_prediction.salary_input import SalaryInput
+from src.dto.salary_prediction.Salary_Input import SalaryInput
 from src.dto.salary_prediction.salary_output import SalaryOutput
 from src.mapper.salary_mapper import map_to_prediction_input, map_to_salary_output, map_to_prognose_output
 from src.services.prediction import predict, pension_prediction

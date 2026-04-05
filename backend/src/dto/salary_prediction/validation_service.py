@@ -1,6 +1,6 @@
-from src.dto.salary_prediction.salary_input import SalaryInput
+from src.dto.salary_prediction.Salary_Input import SalaryInput
 from src.errorhandling.messages import Messages
-from resources.maps import GENDER_MAP, EDUCATION_MAP, JOB_MAP
+from resources.MAPS import GENDER_MAP, EDUCATION_MAP, JOB_MAP
 
 class ValidationService:
     
