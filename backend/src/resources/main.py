@@ -9,6 +9,8 @@ import json
 from src.dto.salary_prediction.validation_service import ValidationService
 from src.dto.salary_prediction.Salary_Input import SalaryInput
 from src.dto.salary_prediction.salary_output import SalaryOutput
+from src.dto.introvert.Introvert_Input import PersonalityInput
+from src.dto.introvert.Introvert_Output import IntrovertOutput
 from src.mapper.salary_mapper import map_to_prediction_input, map_to_salary_output, map_to_prognose_output
 from src.services.prediction import predict, pension_prediction
 
@@ -31,6 +33,10 @@ app.add_middleware(
 @app.get("/hello")
 async def hello():
     return "hello world12"
+
+@app.post("/predict_introvert", response_model=IntrovertOutput)
+async def predictionIntrovert(input: PersonalityInput):
+    return None
 
 @app.post("/prediction", response_model=SalaryOutput)
 async def prediction(input: SalaryInput):
