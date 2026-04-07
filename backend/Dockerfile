@@ -1,19 +1,29 @@
-# Verwende ein Python-Image
-FROM python:latest
+FROM python:3.11-slim
 
-# Arbeitsverzeichnis setzen
-WORKDIR /app  
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 
-# requirements.txt kopieren und Abhängigkeiten installieren
-COPY ./resources/requirements.txt /app/ 
-RUN pip install --no-cache-dir -r /app/requirements.txt
+WORKDIR /app
 
-# Restliche Dateien kopieren
-COPY . /app/ 
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    ca-certificates \
+    && update-ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
 
-# FastAPI mit Uvicorn starten
-# CMD ["uvicorn", "src.resources.main:app", "--host", "0.0.0.0", "--port", "8000"]  # 0.0.0.0 ermöglicht den Zugriff von außen
+COPY ./resources/requirements.txt .
+RUN pip install --no-cache-dir --upgrade pip \
+    && pip install --no-cache-dir -r requirements.txt
 
-# CMD [ "python", "temp.py" ]
+COPY ./src ./src
 
-CMD ["python", "-m", "uvicorn", "src.resources.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+RUN useradd -m appuser
+USER appuser
+
+EXPOSE 8000
+
+HEALTHCHECK CMD curl --fail http://localhost:8000/ || exit 1
+
+CMD ["gunicorn", "-k", "uvicorn.workers.UvicornWorker", "src.resources.main:app", "--bind", "0.0.0.0:8000", "--workers", "3"]
+
+# CMD ["python", "-m", "uvicorn", "src.resources.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
