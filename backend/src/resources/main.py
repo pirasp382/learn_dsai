@@ -6,13 +6,17 @@ from fastapi import status
 
 import json
 
-from src.dto.salary_prediction.validation_service import ValidationService
+from src.dto.salary_prediction.validation_service import SalaryValidationService
+from src.dto.introvert.validation_service import IntrovertValidationService
 from src.dto.salary_prediction.Salary_Input import SalaryInput
 from src.dto.salary_prediction.salary_output import SalaryOutput
 from src.dto.introvert.Introvert_Input import PersonalityInput
 from src.dto.introvert.Introvert_Output import IntrovertOutput
 from src.mapper.salary_mapper import map_to_prediction_input, map_to_salary_output, map_to_prognose_output
 from src.services.prediction import predict, pension_prediction
+from src.dto.introvert.introvert_prediction_dto import IntrovertPredictionInput
+from src.mapper.introvert_mapper import map_to_introvert_dto
+from src.services.introvert_prediction import predict as introvert_prediction
 
 app = FastAPI()
 
@@ -34,13 +38,18 @@ app.add_middleware(
 async def hello():
     return "hello world12"
 
-@app.post("/predict_introvert", response_model=IntrovertOutput)
+@app.post("/predict_introvert")
 async def predictionIntrovert(input: PersonalityInput):
-    return None
+    error_list = IntrovertValidationService().validate(input)
+    if len(error_list)>0:
+        return JSONResponse(content=jsonable_encoder(error_list),
+                            status_code=status.HTTP_200_OK)
+    hello : IntrovertPredictionInput = map_to_introvert_dto(input)
+    return introvert_prediction(hello)
 
 @app.post("/prediction", response_model=SalaryOutput)
 async def prediction(input: SalaryInput):
-    error_list=ValidationService().validate(input)
+    error_list=SalaryValidationService().validate(input)
     if len(error_list)>0:
         return JSONResponse(content=jsonable_encoder(error_list),
                             status_code=status.HTTP_200_OK)
@@ -51,7 +60,7 @@ async def prediction(input: SalaryInput):
 
 @app.post("/pension_prediction")
 async def pension_prediction_endpoint(input: SalaryInput):
-    error_list=ValidationService().validate(input)
+    error_list=SalaryValidationService().validate(input)
     if len(error_list)>0: 
         return JSONResponse(content=jsonable_encoder(error_list),
                             status_code=status.HTTP_200_OK)
