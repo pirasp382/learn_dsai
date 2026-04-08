@@ -7,6 +7,16 @@ EDUCATION_MAP={
     "Bachelor's":3, "High School":4, "Master's": 5, "phD":6
 }
 
+YES_NO= {
+	"Yes":0,
+	"No":1
+}
+
+PERSONALITY_MAP = {
+    0: "Extrovert",
+    1: "Introvert"
+}
+
 JOB_MAP={   
     "Software Engineer":0, 
 	"Data Scientist":1, "Software Engineer Manager":2, "Data Analyst":3, 
