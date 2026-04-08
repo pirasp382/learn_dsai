@@ -1,4 +1,5 @@
 from src.dto.introvert.introvert_prediction_dto import IntrovertPredictionInput
+from src.dto.introvert.Introvert_Output import IntrovertOutput
 from src.dto.introvert.Introvert_Input import PersonalityInput
 from resources.MAPS import YES_NO
 
@@ -18,3 +19,11 @@ def map_stage_fear(input: str):
 
 def map_drained_after_socializing(input: str):
     return YES_NO[input]
+
+def map_to_introvert_output_dto(input):
+    return IntrovertOutput(
+        prediction=input["prediction"],
+        personality=input["personality"],
+        confidence=input["confidence"],
+        probabilities=input["probabilities"]
+    )

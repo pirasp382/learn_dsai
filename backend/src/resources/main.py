@@ -15,7 +15,7 @@ from src.dto.introvert.Introvert_Output import IntrovertOutput
 from src.mapper.salary_mapper import map_to_prediction_input, map_to_salary_output, map_to_prognose_output
 from src.services.prediction import predict, pension_prediction
 from src.dto.introvert.introvert_prediction_dto import IntrovertPredictionInput
-from src.mapper.introvert_mapper import map_to_introvert_dto
+from src.mapper.introvert_mapper import map_to_introvert_dto, map_to_introvert_output_dto
 from src.services.introvert_prediction import predict as introvert_prediction
 
 app = FastAPI()
@@ -38,14 +38,17 @@ app.add_middleware(
 async def hello():
     return "hello world12"
 
-@app.post("/predict_introvert")
+@app.post("/predict_introvert", response_model=IntrovertOutput)
 async def predictionIntrovert(input: PersonalityInput):
     error_list = IntrovertValidationService().validate(input)
     if len(error_list)>0:
         return JSONResponse(content=jsonable_encoder(error_list),
                             status_code=status.HTTP_200_OK)
-    hello : IntrovertPredictionInput = map_to_introvert_dto(input)
-    return introvert_prediction(hello)
+    introvert_dto : IntrovertPredictionInput = map_to_introvert_dto(input)
+    result = introvert_prediction(introvert_dto)
+    output_dto = map_to_introvert_output_dto(result)
+    return JSONResponse(content=jsonable_encoder(output_dto), 
+                        status_code=status.HTTP_200_OK)
 
 @app.post("/prediction", response_model=SalaryOutput)
 async def prediction(input: SalaryInput):

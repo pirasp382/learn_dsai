@@ -3,6 +3,12 @@ from pydantic import BaseModel, Field
 class IntrovertOutput(BaseModel):
     """Response DTO für die Vorhersage"""
 
+    prediction: int=Field(
+        ..., 
+        description="Vorhersagewert der Persönlichkeit",
+        examples=[1, 0]
+    )
+
     personality: str = Field(
         ...,
         description="Vorhergesagte Persönlichkeit",
