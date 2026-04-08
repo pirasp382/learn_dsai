@@ -28,10 +28,10 @@ origins = [
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,  # Erlaubte Ursprünge
+    allow_origins=["http://localhost:3001"],
     allow_credentials=True,
-    allow_methods=["*"],  # Erlaube alle HTTP-Methoden
-    allow_headers=["*"],  # Erlaube alle Header
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 @app.get("/hello")
