@@ -2,7 +2,7 @@ from src.dto.salary_prediction.Salary_Input import SalaryInput
 from src.errorhandling.messages import Messages
 from resources.MAPS import GENDER_MAP, EDUCATION_MAP, JOB_MAP
 
-class ValidationService:
+class SalaryValidationService:
     
     def validate(self, input:SalaryInput):
         message_list=list()

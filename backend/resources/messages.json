@@ -18,5 +18,17 @@
     "MESSAGE_0005":{
         "message":"Jobtitel muss in der Liste sein",
         "severity": "ERROR"
+    },
+    "MESSAGE_0006":{
+        "message":"Wert muss zwischen 0 und 168 sein",
+        "severity": "ERROR"
+    },
+    "MESSAGE_0007":{
+        "message":"Muss ein Ja, Nein Wert sein",
+        "severity": "ERROR"
+    },
+    "MESSAGE_0008":{
+        "message":"Wert muss >= 0 sein",
+        "severity": "ERROR"
     }
 }

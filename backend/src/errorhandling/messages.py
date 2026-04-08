@@ -7,3 +7,6 @@ class Messages:
     FALSCHES_GENDER=MessageFactory().buildMessage("MESSAGE_0003")
     FALSCHER_AUSBILDUNGSTITLE=MessageFactory().buildMessage("MESSAGE_0004")
     FALSCHER_JOBTITLE=MessageFactory().buildMessage("MESSAGE_0005")
+    FALSCHER_WOCHENWERT=MessageFactory().buildMessage("MESSAGE_0006")
+    KEIN_JA_NEIN=MessageFactory().buildMessage("MESSAGE_0007")
+    KLEINER_ALS_0=MessageFactory().buildMessage("MESSAGE_0008")
