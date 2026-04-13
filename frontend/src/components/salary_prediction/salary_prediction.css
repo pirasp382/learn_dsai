@@ -1,49 +1,132 @@
-/* prediction.css */
-
-.main {
+.salary-container {
+    min-height: calc(100vh - var(--header-height));
     display: flex;
-    flex-direction: column;
-    align-items: center; /* Zentriert die Inhalte horizontal */
-    padding: 20px; /* Innenabstand für die gesamte Komponente */
-    background-color: #f4f4f4; /* Hintergrundfarbe */
-    border-radius: 8px; /* Abgerundete Ecken */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Schatten für Tiefe */
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-2xl);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
-#salary {
-    width: 100%; /* Volle Breite */
-    max-width: 600px; /* Maximale Breite */
-    background-color: #fff; /* Hintergrundfarbe für das Eingabeformular */
-    padding: 20px; /* Innenabstand */
-    border-radius: 8px; /* Abgerundete Ecken */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Schatten für Tiefe */
-    margin-bottom: 20px; /* Abstand nach unten */
+.salary-card {
+    max-width: 800px;
+    width: 100%;
+    background: white;
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-2xl);
+    overflow: hidden;
+    animation: fadeIn 0.5s ease-out;
 }
 
-#input_form {
+.salary-header {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+    padding: var(--spacing-2xl);
+    text-align: center;
+}
+
+.salary-header h1 {
+    margin: 0 0 var(--spacing-sm) 0;
+    font-size: 2rem;
+}
+
+.salary-header p {
+    margin: 0;
+    opacity: 0.95;
+    font-size: 1rem;
+}
+
+.salary-form {
+    padding: var(--spacing-2xl);
+}
+
+.form-field {
+    margin-bottom: var(--spacing-xl);
+}
+
+.field-label {
     display: flex;
-    flex-direction: column; /* Elemente untereinander anordnen */
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-weight: 600;
+    color: var(--gray-700);
+    margin-bottom: var(--spacing-md);
 }
 
-#input_form > div {
-    margin-bottom: 15px; /* Abstand zwischen den Eingabefeldern */
+.field-icon {
+    font-size: 1.2rem;
 }
 
-.button_analyse, .button_prognose {
+.button-group {
     display: flex;
-    justify-content: center; /* Zentriert die Buttons */
-    margin-top: 10px; /* Abstand nach oben */
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-xl);
+    flex-wrap: wrap;
 }
 
-.number-output {
-    margin-top: 20px; /* Abstand nach oben */
-    font-size: 20px; /* Schriftgröße für die Ausgabe */
-    font-weight: bold; /* Fettdruck */
-    color: #333; /* Schriftfarbe */
+.error-message {
+    background: #fee;
+    color: var(--error);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin: var(--spacing-md) 0;
+    border-left: 4px solid var(--error);
+    animation: shake 0.3s ease-out;
 }
 
-#prognose {
-    width: 100%; /* Volle Breite */
-    max-width: 800px; /* Maximale Breite für den Graphen */
-    margin-top: 20px; /* Abstand nach oben */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+@media (max-width: 768px) {
+    .salary-container {
+        padding: var(--spacing-md);
+    }
+    
+    .salary-header {
+        padding: var(--spacing-xl);
+    }
+    
+    .salary-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .salary-form {
+        padding: var(--spacing-xl);
+    }
+    
+    .button-group {
+        flex-direction: column;
+    }
+    
+    .button-group button {
+        width: 100%;
+    }
+}
+
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--gray-200);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
 }
